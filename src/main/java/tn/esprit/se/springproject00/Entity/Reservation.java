@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table( name = "Reservation")
@@ -15,4 +16,7 @@ public class Reservation implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date anneeUniversitaire;
     private boolean estValide;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Etudiant> etudiantS;
 }
