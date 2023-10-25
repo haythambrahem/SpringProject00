@@ -1,6 +1,8 @@
 package tn.esprit.se.springproject00.Entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -17,4 +19,10 @@ public class Bloc implements Serializable {
 
     @ManyToOne
     Foyer foyers;
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "universite_id")
+    private Universite universite;
+
 }
