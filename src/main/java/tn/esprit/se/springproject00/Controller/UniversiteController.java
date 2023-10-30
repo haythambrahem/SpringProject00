@@ -35,4 +35,8 @@ public class UniversiteController {
     public Universite retrieveUniversite(@PathVariable long idUniversite) {
         return universiteService.retrieveUniversite(idUniversite);
     }
+    @DeleteMapping("/remove-universite/{idUniversite}")
+    public void removeUniversite(@PathVariable long idUniversite) {
+        universiteService.removeUniversite(idUniversite);
+    }
 }

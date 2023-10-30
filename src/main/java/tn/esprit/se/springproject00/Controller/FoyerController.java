@@ -1,9 +1,43 @@
 package tn.esprit.se.springproject00.Controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import tn.esprit.se.springproject00.Entity.Etudiant;
+import tn.esprit.se.springproject00.Entity.Foyer;
+import tn.esprit.se.springproject00.Interfaces.IFoyerService;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("/foyer")
 public class FoyerController {
+    IFoyerService foyerService;
+
+    @GetMapping("/retrieve-all-foyer")
+    public List<Foyer> getFoyer() {
+        List<Foyer> listFoyers = foyerService.retrieveAllFoyers();
+        return listFoyers;
+    }
+    @PostMapping("/add-foyer")
+    public List<Foyer> addEtudiant(@RequestBody Foyer foyer) {
+        foyerService.addFoyer(foyer);
+        return foyerService.retrieveAllFoyers();
+    }
+
+    @PutMapping("/update-foyer")
+    public Foyer updateFoyer(@RequestBody Foyer foyer) {
+        return foyerService.updateFoyer(foyer);
+    }
+
+    @GetMapping("/retrieve-foyer/{idFoyer}")
+    public Foyer retrieveFoyer(@PathVariable long idFoyer) {
+        return foyerService.retrieveFoyer(idFoyer);
+    }
+
+    @DeleteMapping("/remove-foyer/{idFoyer}")
+    public void removeEtudiant(@PathVariable long idFoyer) {
+        foyerService.removeFoyer(idFoyer);
+    }
+
 }
