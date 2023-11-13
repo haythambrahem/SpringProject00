@@ -39,5 +39,11 @@ public class FoyerController {
     public void removeEtudiant(@PathVariable long idFoyer) {
         foyerService.removeFoyer(idFoyer);
     }
+    @PostMapping("/add-foyer")
+    public List<Foyer> addFoyer(@RequestBody Foyer foyer) {
+        foyerService.addFoyer(foyer);
+        return foyerService.retrieveAllFoyers();
+    }
+
 
 }

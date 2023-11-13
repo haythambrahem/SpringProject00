@@ -27,4 +27,6 @@ public class Bloc implements Serializable {
     @JoinColumn(name = "universite_id")
     private Universite universite;
 
+    public void setChambres(Chambre chambres) {
+    }
 }

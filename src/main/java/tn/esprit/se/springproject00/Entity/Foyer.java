@@ -29,4 +29,10 @@ public class Foyer implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="foyer")
     private Set<Bloc> blocs;
 
+    public String getNomBloc() {
+
+        return null;
+    }
+    public void setBloc(Bloc bloc) {
+    }
 }

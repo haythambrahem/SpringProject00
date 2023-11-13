@@ -10,4 +10,5 @@ import java.util.List;
 public interface BlocRepository extends JpaRepository<Bloc,Long> {
    List<Bloc> findByUniversite(Universite universite);
    Bloc findByNomBloc (String nomBloc );
+
 }

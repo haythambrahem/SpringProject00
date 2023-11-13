@@ -38,5 +38,12 @@ public class EtudientController {
     public void removeEtudiant(@PathVariable long idEtudiant) {
         etudientService.removeEtudiant(idEtudiant);
     }
+    @PutMapping("/affecter-etudiant-reservation/{nomEt}/{prenomEt}/{idReservation}")
+    public Etudiant affecterEtudiantAReservation(
+            @PathVariable String nomEt,
+            @PathVariable String prenomEt,
+            @PathVariable String idReservation) {
+        return etudientService.affecterEtudiantAReservation(nomEt, prenomEt, idReservation);
+    }
 
 }

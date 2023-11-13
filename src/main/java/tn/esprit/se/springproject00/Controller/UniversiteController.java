@@ -46,7 +46,7 @@ public class UniversiteController {
                                                @PathVariable("idFoyer") long idFoyer)
     {
         Universite universite =universiteService.affecterFoyerAUniversite(idFoyer,idUniversute);
-        return null;
+        return universite;
     }
 
 }

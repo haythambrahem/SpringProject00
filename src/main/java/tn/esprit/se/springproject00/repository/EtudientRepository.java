@@ -7,4 +7,5 @@ import tn.esprit.se.springproject00.Entity.Etudiant;
 public interface EtudientRepository extends JpaRepository<Etudiant,Long> {
 
 
+    Etudiant findByNomAndPrenom(String nomEt, String prenomEt);
 }

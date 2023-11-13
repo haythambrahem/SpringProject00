@@ -3,8 +3,10 @@ package tn.esprit.se.springproject00.Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import tn.esprit.se.springproject00.Entity.Bloc;
 import tn.esprit.se.springproject00.Entity.Foyer;
 import tn.esprit.se.springproject00.Interfaces.IFoyerService;
+import tn.esprit.se.springproject00.repository.BlocRepository;
 import tn.esprit.se.springproject00.repository.FoyerRepository;
 
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class FoyerService implements IFoyerService {
     FoyerRepository foyerRepository;
+    BlocRepository blocRepository;
     @Override
     public List<Foyer> retrieveAllFoyers() {
         return foyerRepository.findAll();
@@ -46,7 +49,20 @@ public class FoyerService implements IFoyerService {
 
     @Override
     public Foyer addFoyerWithBloc(Foyer foyer) {
-        return null;
+        Bloc bloc = blocRepository.findByNomBloc(foyer.getNomBloc()); // Adjust this based on your actual logic
+
+        if (bloc != null) {
+            // Set the bloc for the foyer
+            foyer.setBloc(bloc);
+
+            // Save the foyer with the associated bloc
+            foyerRepository.save(foyer);
+
+            return foyer;
+        } else {
+            // Handle the case where the bloc is not found
+            throw new BlocNotFoundException("Bloc with name " + foyer.getNomBloc() + " not found");
+        }
     }
 
 }

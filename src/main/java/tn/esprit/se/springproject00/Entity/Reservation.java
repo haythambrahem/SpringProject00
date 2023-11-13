@@ -23,4 +23,7 @@ public class Reservation implements Serializable {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Etudiant> etudiantS;
+
+    public void setEtudiant(Etudiant etudiant) {
+    }
 }
