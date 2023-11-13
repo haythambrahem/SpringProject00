@@ -39,4 +39,9 @@ public class EtudientService implements IEtudientService {
     public void removeEtudiant(Long idEtudiant) {
     etudientRepository.deleteById(idEtudiant);
     }
+
+    @Override
+    public Etudiant affecterEtudiantAReservation(String nomEt, String prenomEt, String idReservation) {
+        return null;
+    }
 }

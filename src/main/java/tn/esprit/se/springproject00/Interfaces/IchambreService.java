@@ -15,4 +15,5 @@ public interface IchambreService {
     Chambre retrieveChambre(Long idChambre);
 
     void removeChambre(Long idChambre);
+
 }

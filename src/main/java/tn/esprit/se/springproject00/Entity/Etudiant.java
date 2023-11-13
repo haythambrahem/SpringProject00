@@ -1,11 +1,14 @@
 package tn.esprit.se.springproject00.Entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
-
+@Setter
+@Getter
 @Entity
 @Table( name = "Etudiant")
 public class Etudiant implements Serializable {

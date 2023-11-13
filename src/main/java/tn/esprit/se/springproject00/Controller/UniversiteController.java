@@ -39,4 +39,14 @@ public class UniversiteController {
     public void removeUniversite(@PathVariable long idUniversite) {
         universiteService.removeUniversite(idUniversite);
     }
+
+    @PutMapping("/afficher/{idUniversute}/{idFoyer}")
+    @ResponseBody
+    public Universite affecterFoyerAUniversite(@PathVariable("idUniversute") String idUniversute,
+                                               @PathVariable("idFoyer") long idFoyer)
+    {
+        Universite universite =universiteService.affecterFoyerAUniversite(idFoyer,idUniversute);
+        return null;
+    }
+
 }

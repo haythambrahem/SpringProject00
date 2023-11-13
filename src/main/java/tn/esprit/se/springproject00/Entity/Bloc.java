@@ -7,6 +7,8 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.Set;
 
+@Setter
+@Getter
 @Entity
 @Table( name = "Bloc")
 public class Bloc implements Serializable {
@@ -18,7 +20,7 @@ public class Bloc implements Serializable {
     private Long capaciteBloc;
 
     @ManyToOne
-    Foyer foyers;
+    Foyer foyer;
     @Getter
     @Setter
     @ManyToOne

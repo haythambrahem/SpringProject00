@@ -38,4 +38,10 @@ public class BlocService  implements IBlocService {
     public void removeBloc(Long idBloc) {
         blocRepository.deleteById(idBloc);
     }
+
+    @Override
+    public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc)
+    {
+        return null;
+    }
 }

@@ -1,12 +1,43 @@
 package tn.esprit.se.springproject00.Controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import tn.esprit.se.springproject00.Entity.Foyer;
+import tn.esprit.se.springproject00.Entity.Reservation;
+import tn.esprit.se.springproject00.Interfaces.IFoyerService;
+import tn.esprit.se.springproject00.Interfaces.IReservationService;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/Reservation")
 public class ReservationController {
+    IReservationService reservationService;
 
+    @GetMapping("/retrieve-all-reservation")
+    public List<Reservation> getReservation() {
+        List<Reservation> listReservation = reservationService.retrieveAllReservation();
+        return listReservation;
+    }
+    @PostMapping("/add-reservation")
+    public List<Reservation> addReservation(@RequestBody Reservation reservation) {
+        reservationService.addReservation(reservation);
+        return reservationService.retrieveAllReservation();
+    }
+
+    @PutMapping("/update-reservation")
+    public Reservation updateReservation(@RequestBody Reservation reservation) {
+        return reservationService.updateReservation(reservation);
+    }
+
+    @GetMapping("/retrieve-reservation/{idReservation}")
+    public Reservation retrieveReservation(@PathVariable long idReservation) {
+        return reservationService.retrieveReservation(idReservation);
+    }
+
+    @DeleteMapping("/remove-reservation/{idReservation}")
+    public void removeReservation(@PathVariable long idReservation) {
+        reservationService.removeReservation(idReservation);
+    }
 }
