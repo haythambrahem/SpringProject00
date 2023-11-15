@@ -21,8 +21,8 @@ public class BlocService  implements IBlocService {
     BlocRepository blocRepository;
     ChambreRepository chambreRepository;
     @Override
-    public List<Bloc> retrieveAllBloc() {
-        return blocRepository.findAll();
+    public Bloc retrieveAllBloc() {
+        return (Bloc) blocRepository.findAll();
     }
 
     @Override
@@ -46,13 +46,13 @@ public class BlocService  implements IBlocService {
     }
 
     @Override
-    public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc)
+    public Bloc affecterChambresABloc(Long numChambre, String nomBloc)
     {
         Bloc bloc = blocRepository.findByNomBloc(nomBloc);
         // Make sure the bloc exists
         if (bloc != null) {
-            String numChambres = null;
-            Chambre chambres = chambreRepository.findAllByNumeroIn(numChambres);
+            Long numChambres = null;
+            Chambre chambres = chambreRepository.findAllByNumeroChambre(numChambres);
 
             // Assuming you want to associate the chambres with the bloc
             bloc.setChambres(chambres);

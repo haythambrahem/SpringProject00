@@ -15,9 +15,9 @@ import java.util.List;
 public class BlocController {
     BlocService blocService;
     @GetMapping("/retrieve-all-blocs")
-    public List<Bloc> retrieveAllBlocs() {
-        List<Bloc> listBlocs = blocService.retrieveAllBloc();
-        return listBlocs;
+    public Bloc retrieveAllBlocs() {
+        Bloc bloc = blocService.retrieveAllBloc();
+        return bloc;
     }
 
 }

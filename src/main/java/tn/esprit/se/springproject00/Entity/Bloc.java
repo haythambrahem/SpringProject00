@@ -21,8 +21,6 @@ public class Bloc implements Serializable {
 
     @ManyToOne
     Foyer foyer;
-    @Getter
-    @Setter
     @ManyToOne
     @JoinColumn(name = "universite_id")
     private Universite universite;

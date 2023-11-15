@@ -19,8 +19,8 @@ public class FoyerController {
         List<Foyer> listFoyers = foyerService.retrieveAllFoyers();
         return listFoyers;
     }
-    @PostMapping("/add-foyer")
-    public List<Foyer> addEtudiant(@RequestBody Foyer foyer) {
+    @PostMapping("/foyer/add-etudiant")
+    public List<Foyer> addEtudiantToFoyer(@RequestBody Foyer foyer) {
         foyerService.addFoyer(foyer);
         return foyerService.retrieveAllFoyers();
     }

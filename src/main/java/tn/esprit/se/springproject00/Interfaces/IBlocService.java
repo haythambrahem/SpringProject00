@@ -5,7 +5,7 @@ import tn.esprit.se.springproject00.Entity.Bloc;
 import java.util.List;
 
 public interface IBlocService {
-    List<Bloc> retrieveAllBloc();
+    Bloc retrieveAllBloc();
 
     Bloc addBloc(Bloc b);
 
@@ -14,5 +14,5 @@ public interface IBlocService {
     Bloc retrieveBloc(Long idBloc);
 
     void removeBloc(Long idBloc);
-    public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) ;
+    public Bloc affecterChambresABloc(Long numChambre, String nomBloc) ;
 }

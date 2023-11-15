@@ -45,7 +45,7 @@ public class EtudientService implements IEtudientService {
 
     @Override
     public Etudiant affecterEtudiantAReservation(String nomEt, String prenomEt, String idReservation) {
-        Etudiant etudiant = etudientRepository.findByNomAndPrenom(nomEt, prenomEt);
+        Etudiant etudiant = etudientRepository.findByNomEtAndPrenomEt(nomEt, prenomEt);
         Reservation reservation = reservationRepository.findById(idReservation).orElse(null);
 
         if (etudiant != null && reservation != null) {
