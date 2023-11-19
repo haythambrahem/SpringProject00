@@ -3,7 +3,9 @@ package tn.esprit.se.springproject00.Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import tn.esprit.se.springproject00.Entity.Bloc;
 import tn.esprit.se.springproject00.Entity.Chambre;
+import tn.esprit.se.springproject00.Entity.TypeChambre;
 import tn.esprit.se.springproject00.Interfaces.IchambreService;
 import tn.esprit.se.springproject00.repository.ChambreRepository;
 
@@ -38,4 +40,15 @@ public class ChambreService implements IchambreService {
     public void removeChambre(Long idChambre) {
         chambreRepository.deleteById(idChambre);
     }
+
+    @Override
+    public List<Chambre> getChambresParNomBloc(String nomBloc) {
+        return chambreRepository.findByBlocNomBloc(nomBloc);
+    }
+
+    @Override
+    public long nbChambreParTypeEtBloc(TypeChambre typeChambre, Bloc bloc) {
+        return chambreRepository.countByTypeChambreAndBloc(typeChambre, bloc);
+    }
+
 }

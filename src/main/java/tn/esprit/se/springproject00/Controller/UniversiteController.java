@@ -40,13 +40,20 @@ public class UniversiteController {
         universiteService.removeUniversite(idUniversite);
     }
 
-    @PutMapping("/afficher/{idUniversute}/{idFoyer}")
+    @PutMapping("/afficher/{idUniversite}/{idFoyer}")
     @ResponseBody
-    public Universite affecterFoyerAUniversite(@PathVariable("idUniversute") String idUniversute,
+    public Universite affecterFoyerAUniversite(@PathVariable("idUniversite") String idUniversite,
                                                @PathVariable("idFoyer") long idFoyer)
     {
-        Universite universite =universiteService.affecterFoyerAUniversite(idFoyer,idUniversute);
+        Universite universite =universiteService.affecterFoyerAUniversite(idFoyer,idUniversite);
         return universite;
     }
+    @PutMapping("/desaffecter/{idUniversite}")
+    @ResponseBody
+    public Universite desaffecterFoyerAUniversite(@PathVariable("idUniversite") long idUniversite) {
+        Universite universite = universiteService.desaffecterFoyerAUniversite(idUniversite);
+        return universite;
+    }
+
 
 }

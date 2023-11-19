@@ -16,10 +16,13 @@ public class Chambre implements Serializable {
     @Column(name="idChambre")
     private Long idChambre; // Clé primaire
     private Long numeroChambre;
+
+    @Enumerated(EnumType.STRING)
     private TypeChambre typeChambre;
 
     @ManyToOne
-    Bloc blocs;
+    @JoinColumn(name = "idBloc")
+    Bloc bloc;
     @OneToMany
     private Set<Reservation> reservations;
 }

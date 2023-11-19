@@ -21,6 +21,10 @@ public class Reservation implements Serializable {
     private Date anneeUniversitaire;
     private boolean estValide;
 
+    @ManyToOne
+    @JoinColumn(name = "idChambre")
+    private Chambre chambre;
+
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Etudiant> etudiantS;
 

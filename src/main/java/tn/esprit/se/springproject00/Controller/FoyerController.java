@@ -44,6 +44,11 @@ public class FoyerController {
         foyerService.addFoyer(foyer);
         return foyerService.retrieveAllFoyers();
     }
+    @PostMapping("/add-foyer-with-bloc")
+    public List<Foyer> addFoyerWithBloc(@RequestBody Foyer foyer) {
+        foyerService.addFoyerWithBloc(foyer);
+        return foyerService.retrieveAllFoyers();
+    }
 
 
 }

@@ -54,7 +54,6 @@ public class BlocService  implements IBlocService {
             Long numChambres = null;
             Chambre chambres = chambreRepository.findAllByNumeroChambre(numChambres);
 
-            // Assuming you want to associate the chambres with the bloc
             bloc.setChambres(chambres);
 
             // Save the updated bloc with associated chambres

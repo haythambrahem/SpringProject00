@@ -7,6 +7,7 @@ import tn.esprit.se.springproject00.Entity.Reservation;
 import tn.esprit.se.springproject00.Interfaces.IReservationService;
 import tn.esprit.se.springproject00.repository.ReservationRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -37,5 +38,9 @@ public class ReservationService implements IReservationService {
     @Override
     public void removeReservation(Long idReservation) {
         reservationRepository.deleteById(String.valueOf(idReservation));
+    }
+    @Override
+    public List<Reservation> getReservationParAnneeUniversitaire(Date anneeUniversitaire) {
+        return reservationRepository.findByAnneeUniversitaire(anneeUniversitaire);
     }
 }

@@ -56,8 +56,8 @@ public class UniversiteService implements IUniversiteService {
     }
 
     @Override
-    public Universite desaffecterFoyerAUniversite(long idUniversite) {
-        Universite universite = universiteRepository.findById(idUniversite).get();
+    public Universite desaffecterFoyerAUniversite(long idFoyer) {
+        Universite universite = universiteRepository.findById(idFoyer).get();
         universite.setFoyer(null);
         universiteRepository.save(universite);
 

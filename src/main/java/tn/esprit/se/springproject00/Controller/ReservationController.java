@@ -1,12 +1,14 @@
 package tn.esprit.se.springproject00.Controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.se.springproject00.Entity.Foyer;
 import tn.esprit.se.springproject00.Entity.Reservation;
 import tn.esprit.se.springproject00.Interfaces.IFoyerService;
 import tn.esprit.se.springproject00.Interfaces.IReservationService;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -40,4 +42,10 @@ public class ReservationController {
     public void removeReservation(@PathVariable long idReservation) {
         reservationService.removeReservation(idReservation);
     }
+    @GetMapping("/reservations-par-annee-universitaire")
+    public List<Reservation> getReservationParAnneeUniversitaire(
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date anneeUniversitaire) {
+        return reservationService.getReservationParAnneeUniversitaire(anneeUniversitaire);
+    }
+
 }
