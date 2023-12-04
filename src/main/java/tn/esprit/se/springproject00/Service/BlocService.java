@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.se.springproject00.Entity.Bloc;
 import tn.esprit.se.springproject00.Entity.Chambre;
@@ -63,6 +64,21 @@ public class BlocService  implements IBlocService {
         } else {
             // Handle the case where the bloc does not exist
             throw new BlocNotFoundException("Bloc with name " + nomBloc + " not found");
+        }
+    }
+    @Scheduled(fixedRate = 60000)  //déclenche toutes les minutes
+    @Override
+    public void listeChambresParBloc() {
+        List<Chambre> chambres = chambreRepository.findAll();
+        List<Bloc> blocs = blocRepository.findAll();
+        for (Bloc bloc : blocs) {
+            System.out.println("bloc : " + bloc.getNomBloc() + " ayant une capacité de : " + bloc.getCapaciteBloc());
+            System.out.println("Liste des chambres du bloc " + bloc.getNomBloc() + " :");
+
+
+            for (Chambre chambre : chambres) {
+                System.out.println("chambre numéro " + chambre.getNumeroChambre() + " de type " + chambre.getTypeChambre());
+            }
         }
     }
 }

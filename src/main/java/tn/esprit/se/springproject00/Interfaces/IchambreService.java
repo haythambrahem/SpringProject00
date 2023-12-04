@@ -20,5 +20,5 @@ public interface IchambreService {
     public List<Chambre> getChambresParNomBloc( String nomBloc );
     public long nbChambreParTypeEtBloc(TypeChambre type, Bloc idBloc );
 
-
+    void pourcentageChambreParTypeChambre();
 }

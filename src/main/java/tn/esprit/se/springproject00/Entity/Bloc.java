@@ -27,4 +27,8 @@ public class Bloc implements Serializable {
 
     public void setChambres(Chambre chambres) {
     }
+
+    public Chambre[] getChambres() {
+        return new Chambre[0];
+    }
 }

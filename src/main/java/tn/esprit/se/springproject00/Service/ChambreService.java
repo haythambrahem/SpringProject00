@@ -2,6 +2,7 @@ package tn.esprit.se.springproject00.Service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.se.springproject00.Entity.Bloc;
 import tn.esprit.se.springproject00.Entity.Chambre;
@@ -9,6 +10,7 @@ import tn.esprit.se.springproject00.Entity.TypeChambre;
 import tn.esprit.se.springproject00.Interfaces.IchambreService;
 import tn.esprit.se.springproject00.repository.ChambreRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -50,5 +52,45 @@ public class ChambreService implements IchambreService {
     public long nbChambreParTypeEtBloc(TypeChambre typeChambre, Bloc bloc) {
         return chambreRepository.countByTypeChambreAndBloc(typeChambre, bloc);
     }
+
+    @Scheduled(fixedRate = 300000)  //service qui se déclenche toutes les 5 minutes
+    @Override
+    public void pourcentageChambreParTypeChambre() {
+
+        //LocalDate date = LocalDate.now();
+
+        List<Chambre> chambres = chambreRepository.findAll();
+
+        int nombreChambresSimple = 0;
+        int nombreChambresDouble = 0;
+        int nombreChambresTriple = 0;
+        long nombrechambre = chambreRepository.count();
+        System.out.println("nb totals des chambres est : " +nombrechambre );
+        for (Chambre chambre : chambres) {
+
+            switch (chambre.getTypeChambre()) {
+                case SIMPLE:
+                    nombreChambresSimple++;
+                    break;
+                case DOUBLE:
+                    nombreChambresDouble++;
+                    break;
+                case TRIPLE:
+                    nombreChambresTriple++;
+                    break;
+            }
+        }
+
+        double pourcentageChambresSimple = (double) nombreChambresSimple / chambres.size() * 100;
+        double pourcentageChambresDouble = (double) nombreChambresDouble / chambres.size() * 100;
+        double pourcentageChambresTriple = (double) nombreChambresTriple / chambres.size() * 100;
+
+        //System.out.println(date);
+        System.out.println("pourcentage des chambres pour le type SIMPLE est égale à " + pourcentageChambresSimple);
+        System.out.println("pourcentage des chambres pour le type DOUBLE est égale à " + pourcentageChambresDouble);
+        System.out.println("pourcentage des chambres pour le type TRIPLE est égale à " + pourcentageChambresTriple);
+
+    }
+
 
 }

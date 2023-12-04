@@ -2,8 +2,11 @@ package tn.esprit.se.springproject00;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
+@EnableScheduling
 @SpringBootApplication
+
 public class SpringProject00Application {
 
     public static void main(String[] args) {

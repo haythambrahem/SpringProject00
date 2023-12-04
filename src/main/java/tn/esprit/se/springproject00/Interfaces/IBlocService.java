@@ -15,4 +15,6 @@ public interface IBlocService {
 
     void removeBloc(Long idBloc);
     public Bloc affecterChambresABloc(Long numChambre, String nomBloc) ;
+    void listeChambresParBloc();
+
 }
